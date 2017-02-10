@@ -1,12 +1,30 @@
-body{
-	/*background-image: url('../images/snow.jpeg');
-	background-repeat: no-repeat;
-	background-size: cover;*/
+
+#temp-reader{
+	background-color: rgba(240, 228, 228, .5);
+	text-align: center;
+
+	/*temporary*/
+	height: 500px;
 }
 
-/*image{
-	height: 100%;
-}*/
+
+
+
+
+
+
+
+
+
+
+/*Source: https://css-tricks.com/perfect-full-page-background-image/*/
+html, .container-fluid{
+	background: url('../images/snow.jpeg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;;
+}
 
 
 
@@ -20,10 +38,6 @@ body{
 
 
 
-/*Source: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Background_and_Borders/Scaling_background_images*/
-.bgSizeCover {
-  height: 100rem;
-  background-image: url('../images/rainy-mobile.jpg');
-  background-size: cover;
-  border: 2px solid darkgray;
-  color: #000; text-shadow: 1px 1px 0 #fff;
+
+
+
