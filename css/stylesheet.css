@@ -8,11 +8,14 @@
 }
 
 
-.fa-sun-o{
+.fa-sun-o, .fa-moon-o, .fa-bolt{
 	color: #C1A70C;
 }
 .fa-thermometer-full{
 	color: #C1310C;
+}
+.fa-snowflake-o{
+	color: #4D70AB;
 }
 
 
