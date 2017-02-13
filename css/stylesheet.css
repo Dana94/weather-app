@@ -29,7 +29,7 @@
 
 /*Source: https://css-tricks.com/perfect-full-page-background-image/*/
 html, .container-fluid{
-	background: url('../images/snow.jpeg') no-repeat center center fixed; 
+	background: url('../images/sunset.jpeg') no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

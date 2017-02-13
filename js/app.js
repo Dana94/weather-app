@@ -1,5 +1,5 @@
 let icons = ['fa-sun','fa-thermometer-full', 'fa-snowflake-o','fa-cloud', 'fa-bolt', 'fa-moon-o'];
-let weather = ['snow','sunny', 'rainy', 'cloudy', 'night', 'sunset-night'];
+let weather = ['snow','sunny', 'rain', 'cloudy', 'night', 'sunset', 'sunrise'];
 
 $('#icons').hide();
 //Source: https://www.freecodecamp.com/challenges/get-geolocation-data
@@ -19,10 +19,11 @@ function loadWeather(location, woeid) {
       html += '<h1 id="temps">'+ weather.temp +'&deg;'+ weather.units.temp + ', ' + weather.alt.temp +'&deg;C</h1>';
       html += '<h1 id="condition">'+weather.currently+'</h1>';
       
-      
+      getSymbols(weather.currently);
       $("#location").html(html);
-      $('#icons').html('<i class="fa fa-snowflake-o fa-4x" aria-hidden="true"></i>');
-      $('#icons').show();
+      // $('#icons').html(getSymbols(weather.currently));
+      
+      // $('#icons').show();
     },
     error: function(error) {
       $("#location").html('<p>'+error+'</p>');
@@ -31,13 +32,21 @@ function loadWeather(location, woeid) {
 }
 
 
-function getSymbols(){
-	let condition = document.getElementById('condition').innerhtml.split(' ');
-	console.log('hi');
+function getSymbols(condition){
+	condition = condition.split(' ').filter(function(word){
+		return word != 'and';
+	});
+	if(condition.indexOf('Snow') != -1){
+		$('html').css('background-image', 'url(images/snow.jpeg)');
+		$('.container-fluid').css('background-image', 'url(images/snow.jpeg)');
+	}	   
+	else{ //if(condition.indexOf('Sunny') != -1){
+		$('html').css('background-image', 'url(images/sunny.jpeg)');
+		$('.container-fluid').css('background-image', 'url(images/sunny.jpeg)');
+	}
 	// if(condition.indexOf('snow') != -1){
-	// 	return '<i class="fa fa-snowflake-o fa-4x" aria-hidden="true"></i>';
+	 	//return '<i class="fa fa-snowflake-o fa-4x" aria-hidden="true"></i>';
 	// }
 }
 
 
-document.getElementById('location').addEventListener(onchange, getSymbols);
