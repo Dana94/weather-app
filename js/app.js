@@ -1,5 +1,13 @@
-let icons = ['fa-sun','fa-thermometer-full', 'fa-snowflake-o','fa-cloud', 'fa-bolt', 'fa-moon-o'];
-let weather = ['snow','sunny', 'rain', 'cloudy', 'night', 'sunset', 'sunrise'];
+let icons = ['fa-sun','fa-thermometer-full', 'fa-thermometer-half', 'fa-snowflake-o', 'fa-cloud', 'fa-bolt', 'fa-moon-o'];
+let images = ['sunrise', 'sunset', 'night', 'cloud', 'rain', 'sunny', 'snow'];
+
+let myWeather = {
+	city: "",
+	region: "",
+	temp_F: "",
+	temp_C: "",
+	condition: ""
+};
 
 $('#icons').hide();
 //Source: https://www.freecodecamp.com/challenges/get-geolocation-data
@@ -15,15 +23,19 @@ function loadWeather(location, woeid) {
     woeid: woeid,
     unit: 'f',
     success: function(weather) {
+      
+      myWeather.condition = weather.currently.toLowerCase();
+      myWeather.city = weather.city,
+	  myWeather.region = weather.region,
+	  myWeather.temp_F = weather.temp,
+	  myWeather.temp_C = weather.alt.temp;
+
       let html = '<h1 id="city-region">'+weather.city+', '+weather.region+'</h1>';
       html += '<h1 id="temps">'+ weather.temp +'&deg;'+ weather.units.temp + ', ' + weather.alt.temp +'&deg;C</h1>';
       html += '<h1 id="condition">'+weather.currently+'</h1>';
       
-      getSymbols(weather.currently);
+      displaySymbols();
       $("#location").html(html);
-      // $('#icons').html(getSymbols(weather.currently));
-      
-      // $('#icons').show();
     },
     error: function(error) {
       $("#location").html('<p>'+error+'</p>');
@@ -31,22 +43,28 @@ function loadWeather(location, woeid) {
   });
 }
 
+let iconsPlace = document.getElementsByTagName('i');
 
-function getSymbols(condition){
-	condition = condition.split(' ').filter(function(word){
-		return word != 'and';
-	});
-	if(condition.indexOf('Snow') != -1){
-		$('html').css('background-image', 'url(images/snow.jpeg)');
-		$('.container-fluid').css('background-image', 'url(images/snow.jpeg)');
-	}	   
-	else{ //if(condition.indexOf('Sunny') != -1){
-		$('html').css('background-image', 'url(images/sunny.jpeg)');
-		$('.container-fluid').css('background-image', 'url(images/sunny.jpeg)');
+function displaySymbols(){
+	for(let i = 0; i < images.length; i++){
+		if (myWeather.condition.indexOf(images[i]) != -1){
+			$('html').css('background-image', 'url(images/'+images[i]+'.jpeg)');
+	     	$('.container-fluid').css('background-image', 'url(images/'+images[i]+'.jpeg)');
+
+	     	$(iconsPlace[0]).addClass('fa-'+images[i]);
+	     	$(iconsPlace[1]).addClass('fa-thermometer-half');
+		}
 	}
-	// if(condition.indexOf('snow') != -1){
-	 	//return '<i class="fa fa-snowflake-o fa-4x" aria-hidden="true"></i>';
-	// }
+	
+	// if(myWeather.condition.indexOf('Cloudy') != -1){
+	// 	$('html').css('background-image', 'url(images/cloudy.jpeg)');
+	// 	$('.container-fluid').css('background-image', 'url(images/cloudy.jpeg)');
+
+	// 	$(iconsPlace[0]).addClass('fa-cloud');
+	// }	   
+	
+	$('#icons').show();
+	
 }
 
 
