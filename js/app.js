@@ -1,4 +1,4 @@
-let icons = ['fa-sun','fa-thermometer-full', 'fa-thermometer-half', 'fa-snowflake-o', 'fa-cloud', 'fa-bolt', 'fa-moon-o'];
+let icons = ['fa-sun', 'fa-moon-o', 'fa-cloud', 'fa-bolt', 'fa-snowflake-o'];
 let images = ['sunrise', 'sunset', 'night', 'cloud', 'rain', 'sunny', 'snow'];
 
 let myWeather = {
@@ -6,7 +6,9 @@ let myWeather = {
 	region: "",
 	temp_F: "",
 	temp_C: "",
-	condition: ""
+	condition: "",
+	sunrise: "",
+	sunset: ""
 };
 
 $('#icons').hide();
@@ -29,6 +31,10 @@ function loadWeather(location, woeid) {
 	  myWeather.region = weather.region,
 	  myWeather.temp_F = weather.temp,
 	  myWeather.temp_C = weather.alt.temp;
+	  myWeather.sunrise = weather.sunrise;
+	  myWeather.sunset = weather.sunset;
+
+	  //console.log(myWeather.sunrise + " " + myWeather.sunset);
 
       let html = '<h1 id="city-region">'+weather.city+', '+weather.region+'</h1>';
       html += '<h1 id="temps">'+ weather.temp +'&deg;'+ weather.units.temp + ', ' + weather.alt.temp +'&deg;C</h1>';
@@ -52,18 +58,42 @@ function displaySymbols(){
 	     	$('.container-fluid').css('background-image', 'url(images/'+images[i]+'.jpeg)');
 
 	     	$(iconsPlace[0]).addClass('fa-'+images[i]);
-	     	$(iconsPlace[1]).addClass('fa-thermometer-half');
+	     	
 		}
 	}
-	
-	// if(myWeather.condition.indexOf('Cloudy') != -1){
-	// 	$('html').css('background-image', 'url(images/cloudy.jpeg)');
-	// 	$('.container-fluid').css('background-image', 'url(images/cloudy.jpeg)');
 
-	// 	$(iconsPlace[0]).addClass('fa-cloud');
-	// }	   
-	
+	if(myWeather.temp_F >= 102){
+		$(iconsPlace[1]).addClass('fa-thermometer-full');
+	}
+	else if(myWeather.temp_F >= 63){
+		$(iconsPlace[1]).addClass('fa-thermometer-three-quarters');
+	}
+	else if(myWeather.temp_F >= 42){
+		$(iconsPlace[1]).addClass('fa-thermometer-half');
+	}
+	else if(myWeather.temp_F >= 21){
+		$(iconsPlace[1]).addClass('fa-thermometer-quarter');
+	}
+	else{
+		$(iconsPlace[1]).addClass('fa-thermometer-empty');
+	}
+
 	$('#icons').show();
+
+	let currentTime = new Date();//.toLocaleTimeString();
+	//let sunrisePlus20Min = myWeather.sunrise.
+	//if()
+
+	//works vv
+	console.log(currentTime.toLocaleTimeString());
+	currentTime.setMinutes(currentTime.getMinutes() + 20);
+	console.log(currentTime.toLocaleTimeString());
+	
+	
+	//doesn't work vv
+	// let sunriseTime = new Date();
+	// myWeather.sunrise.setMinutes(myWeather.sunrise.getMinutes() + 20);
+	// console.log(myWeather.sunrise);
 	
 }
 

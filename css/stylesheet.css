@@ -11,17 +11,26 @@
 .fa-sun-o, .fa-moon-o, .fa-bolt{
 	color: #C1A70C;
 }
-.fa-thermometer-full{
-	color: #C1310C;
-}
-.fa-thermometer-full{
-	color: #878EC0;
-}
 .fa-snowflake-o{
 	color: #4D70AB;
 }
 .fa-cloud{
 	color: #838E9A;
+}
+.fa-thermometer-full{
+	color: #C1310C;
+}
+.fa-thermometer-three-quarters{
+	color: #E76107;
+}
+.fa-thermometer-half{
+	color: #666FAE;
+}
+.fa-thermometer-quarter{
+	color: #878EC0;
+}
+.fa-thermometer-empty{
+	color: #031DDF;
 }
 
 
