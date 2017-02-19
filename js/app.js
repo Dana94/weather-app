@@ -1,4 +1,4 @@
-let icons = ['fa-sun', 'fa-moon-o', 'fa-cloud', 'fa-bolt', 'fa-snowflake-o'];
+let icons = ['fa-sun-o', 'fa-moon-o', 'fa-cloud', 'fa-bolt', 'fa-snowflake-o'];
 let images = ['sunrise', 'sunset', 'night', 'cloud', 'rain', 'sunny', 'snow'];
 
 let myWeather = {
@@ -57,11 +57,27 @@ function displaySymbols(){
 			$('html').css('background-image', 'url(images/'+images[i]+'.jpeg)');
 	     	$('.container-fluid').css('background-image', 'url(images/'+images[i]+'.jpeg)');
 
-	     	$(iconsPlace[0]).addClass('fa-'+images[i]);
+	     	
 	     	
 		}
 	}
 
+	//weather icons
+	if(/sunny/.test(myWeather.condition)){	
+			$(iconsPlace[0]).addClass('fa-sun-o');
+	}
+	else if (/cloudy/.test(myWeather.condition)){
+			$(iconsPlace[0]).addClass('fa-cloud');
+	}	
+	else if (/snow/.test(myWeather.condition)){
+			$(iconsPlace[0]).addClass('fa-snowflake-o');
+	}	
+	else if (/thunder/.test(myWeather.condition)){
+			$(iconsPlace[0]).addClass('fa-bolt');
+	}	
+
+	
+	//thermometer icons
 	if(myWeather.temp_F >= 102){
 		$(iconsPlace[1]).addClass('fa-thermometer-full');
 	}
@@ -78,6 +94,8 @@ function displaySymbols(){
 		$(iconsPlace[1]).addClass('fa-thermometer-empty');
 	}
 
+
+
 	$('#icons').show();
 
 	let currentTime = new Date();//.toLocaleTimeString();
@@ -89,7 +107,11 @@ function displaySymbols(){
 	currentTime.setMinutes(currentTime.getMinutes() + 20);
 	console.log(currentTime.toLocaleTimeString());
 	
+	let ct = currentTime.toLocaleTimeString();
 	
+	// if(currentTime.toLocaleTimeString()  myWeather.sunset){
+	 	//console.log(currentTime.toLocaleTimeString() - myWeather.sunset);
+	// }
 	//doesn't work vv
 	// let sunriseTime = new Date();
 	// myWeather.sunrise.setMinutes(myWeather.sunrise.getMinutes() + 20);
