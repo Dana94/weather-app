@@ -52,28 +52,33 @@ function loadWeather(location, woeid) {
 let iconsPlace = document.getElementsByTagName('i');
 
 function displaySymbols(){
-	for(let i = 0; i < images.length; i++){
-		if (myWeather.condition.indexOf(images[i]) != -1){
-			$('html').css('background-image', 'url(images/'+images[i]+'.jpeg)');
-	     	$('.container-fluid').css('background-image', 'url(images/'+images[i]+'.jpeg)');
+	// for(let i = 0; i < images.length; i++){
+	// 	if (myWeather.condition.indexOf(images[i]) != -1){
+	// 		$('html').css('background-image', 'url(images/'+images[i]+'.jpeg)');
+	//      	$('.container-fluid').css('background-image', 'url(images/'+images[i]+'.jpeg)');	     	
+	// 	}
+	// }
 
-	     	
-	     	
-		}
-	}
-
-	//weather icons
+	//weather icons and images
 	if(/sunny/.test(myWeather.condition)){	
 			$(iconsPlace[0]).addClass('fa-sun-o');
+			$('html').css('background-image', 'url(images/sunny.jpeg)');
+	     	$('.container-fluid').css('background-image', 'url(images/sunny.jpeg)');
 	}
 	else if (/cloudy/.test(myWeather.condition)){
 			$(iconsPlace[0]).addClass('fa-cloud');
+			$('html').css('background-image', 'url(images/cloud.jpeg)');
+	     	$('.container-fluid').css('background-image', 'url(images/cloud.jpeg)');
 	}	
 	else if (/snow/.test(myWeather.condition)){
 			$(iconsPlace[0]).addClass('fa-snowflake-o');
+			$('html').css('background-image', 'url(images/snow.jpeg)');
+	     	$('.container-fluid').css('background-image', 'url(images/snow.jpeg)');
 	}	
 	else if (/thunder/.test(myWeather.condition)){
 			$(iconsPlace[0]).addClass('fa-bolt');
+			$('html').css('background-image', 'url(images/night-thunder.jpeg)');
+	     	$('.container-fluid').css('background-image', 'url(images/night-thunder.jpeg)');
 	}	
 
 	

@@ -1,10 +1,11 @@
 
 #temp-reader{
-	background-color: rgba(240, 228, 228, .5);
+	margin-top: 5rem;
+	background-color: rgba( 249, 245, 245, .75);
 	text-align: center;
 
 	/*temporary*/
-	height: 500px;
+	height: 50rem;/*500px;*/
 }
 
 
