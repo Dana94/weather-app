@@ -12,6 +12,7 @@ let myWeather = {
 };
 
 $('#icons').hide();
+
 //Source: https://www.freecodecamp.com/challenges/get-geolocation-data
 if (navigator.geolocation){
     navigator.geolocation.getCurrentPosition(function(position){
@@ -52,13 +53,6 @@ function loadWeather(location, woeid) {
 let iconsPlace = document.getElementsByTagName('i');
 
 function displaySymbols(){
-	// for(let i = 0; i < images.length; i++){
-	// 	if (myWeather.condition.indexOf(images[i]) != -1){
-	// 		$('html').css('background-image', 'url(images/'+images[i]+'.jpeg)');
-	//      	$('.container-fluid').css('background-image', 'url(images/'+images[i]+'.jpeg)');	     	
-	// 	}
-	// }
-
 	//weather icons and images
 	if(/sunny/.test(myWeather.condition)){	
 			$(iconsPlace[0]).addClass('fa-sun-o');
@@ -69,6 +63,11 @@ function displaySymbols(){
 			$(iconsPlace[0]).addClass('fa-cloud');
 			$('html').css('background-image', 'url(images/cloud.jpeg)');
 	     	$('.container-fluid').css('background-image', 'url(images/cloud.jpeg)');
+	}	
+	else if (/rain/.test(myWeather.condition)){
+			$(iconsPlace[0]).addClass('fa-cloud');
+			$('html').css('background-image', 'url(images/rainy.jpeg)');
+	     	$('.container-fluid').css('background-image', 'url(images/rainy.jpeg)');
 	}	
 	else if (/snow/.test(myWeather.condition)){
 			$(iconsPlace[0]).addClass('fa-snowflake-o');
@@ -99,16 +98,9 @@ function displaySymbols(){
 		$(iconsPlace[1]).addClass('fa-thermometer-empty');
 	}
 
-
-
 	$('#icons').show();
 
-	let currentTime = new Date();//.toLocaleTimeString();
-	//let sunrisePlus20Min = myWeather.sunrise.
-	//if()
-
-	//works vv
-	console.log(currentTime.toLocaleTimeString());
+	let currentTime = new Date();
 
 	let currentTimeMinus20 = currentTime;
 	currentTimeMinus20.setMinutes(currentTimeMinus20.getMinutes() - 20);
@@ -127,17 +119,5 @@ function displaySymbols(){
 		$('html').css('background-image', 'url(images/sunset.jpeg)');
 	    $('.container-fluid').css('background-image', 'url(images/sunset.jpeg)');
 
-	}
-
-	
-	// if(currentTime.toLocaleTimeString()  myWeather.sunset){
-	 	//console.log(currentTime.toLocaleTimeString() - myWeather.sunset);
-	// }
-	//doesn't work vv
-	// let sunriseTime = new Date();
-	// myWeather.sunrise.setMinutes(myWeather.sunrise.getMinutes() + 20);
-	// console.log(myWeather.sunrise);
-	
+	}	
 }
-
-

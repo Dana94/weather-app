@@ -1,13 +1,16 @@
-
 #temp-reader{
 	margin-top: 5rem;
 	background-color: rgba( 249, 245, 245, .75);
 	text-align: center;
+	padding-bottom: 1rem;
 
-	/*temporary*/
-	height: 50rem;/*500px;*/
 }
 
+@media (min-width: 1500px){
+	#temp-reader{
+		margin-top: 10%;
+	}
+}
 
 .fa-sun-o, .fa-moon-o, .fa-bolt{
 	color: #C1A70C;
@@ -34,15 +37,6 @@
 	color: #031DDF;
 }
 
-
-
-
-
-
-
-
-
-
 /*Source: https://css-tricks.com/perfect-full-page-background-image/*/
 html, .container-fluid{
 	background: url('../images/sunset.jpeg') no-repeat center center fixed; 
@@ -51,19 +45,3 @@ html, .container-fluid{
     -o-background-size: cover;
     background-size: cover;;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
