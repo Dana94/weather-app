@@ -80,7 +80,6 @@ function displaySymbols(){
 	     	$('.container-fluid').css('background-image', 'url(images/night-thunder.jpeg)');
 	}	
 
-	
 	//thermometer icons
 	if(myWeather.temp_F >= 102){
 		$(iconsPlace[1]).addClass('fa-thermometer-full');
@@ -103,21 +102,19 @@ function displaySymbols(){
 	let currentTime = new Date();
 
 	let currentTimeMinus20 = currentTime;
-	currentTimeMinus20.setMinutes(currentTimeMinus20.getMinutes() - 20);
+	currentTimeMinus20.setMinutes(currentTime.getMinutes() - 20);
+	
+	currentTime = new Date();
 	
 	let currentTimePlus20 = currentTime;
-	currentTimePlus20.setMinutes(currentTimePlus20.getMinutes() + 20);
-	
-	if(currentTimeMinus20.toLocaleTimeString() <= myWeather.sunrise && currentTimePlus20.toLocaleTimeString() >= myWeather.sunrise){
-		console.log("sunrise");
+	currentTimePlus20.setMinutes(currentTime.getMinutes() + 20);	
+
+	if(/am/ig.test(currentTimeMinus20.toLocaleTimeString()) && currentTimeMinus20.toLocaleTimeString() <= myWeather.sunrise && currentTimePlus20.toLocaleTimeString() >= myWeather.sunrise){
 		$('html').css('background-image', 'url(images/sunrise.jpeg)');
 	    $('.container-fluid').css('background-image', 'url(images/sunrise.jpeg)');
-
 	}
-	else if(currentTimeMinus20.toLocaleTimeString() <= myWeather.sunset && currentTimePlus20.toLocaleTimeString() >= myWeather.sunset){
-		console.log("sunset");
+	else if(/pm/ig.test(currentTimeMinus20.toLocaleTimeString()) && currentTimeMinus20.toLocaleTimeString() <= myWeather.sunset && currentTimePlus20.toLocaleTimeString() >= myWeather.sunset){
 		$('html').css('background-image', 'url(images/sunset.jpeg)');
 	    $('.container-fluid').css('background-image', 'url(images/sunset.jpeg)');
-
-	}	
+	}		
 }
