@@ -64,7 +64,7 @@ function displaySymbols(){
 			$('html').css('background-image', 'url(images/cloud.jpeg)');
 	     	$('.container-fluid').css('background-image', 'url(images/cloud.jpeg)');
 	}	
-	else if (/rain/.test(myWeather.condition)){
+	else if (/rain|shower/.test(myWeather.condition)){
 			$(iconsPlace[0]).addClass('fa-cloud');
 			$('html').css('background-image', 'url(images/rainy.jpeg)');
 	     	$('.container-fluid').css('background-image', 'url(images/rainy.jpeg)');
