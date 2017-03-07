@@ -54,27 +54,27 @@ let iconsPlace = document.getElementsByTagName('i');
 
 function displaySymbols(){
 	//weather icons and images
-	if(/sunny/.test(myWeather.condition)){	
+	if(/sunny/gi.test(myWeather.condition)){	
 			$(iconsPlace[0]).addClass('fa-sun-o');
 			$('html').css('background-image', 'url(images/sunny.jpeg)');
 	     	$('.container-fluid').css('background-image', 'url(images/sunny.jpeg)');
 	}
-	else if (/cloudy/.test(myWeather.condition)){
+	else if (/cloudy/gi.test(myWeather.condition)){
 			$(iconsPlace[0]).addClass('fa-cloud');
 			$('html').css('background-image', 'url(images/cloud.jpeg)');
 	     	$('.container-fluid').css('background-image', 'url(images/cloud.jpeg)');
 	}	
-	else if (/rain|shower/.test(myWeather.condition)){
+	else if (/rain|shower/gi.test(myWeather.condition)){
 			$(iconsPlace[0]).addClass('fa-cloud');
 			$('html').css('background-image', 'url(images/rainy.jpeg)');
 	     	$('.container-fluid').css('background-image', 'url(images/rainy.jpeg)');
 	}	
-	else if (/snow/.test(myWeather.condition)){
+	else if (/snow/gi.test(myWeather.condition)){
 			$(iconsPlace[0]).addClass('fa-snowflake-o');
 			$('html').css('background-image', 'url(images/snow.jpeg)');
 	     	$('.container-fluid').css('background-image', 'url(images/snow.jpeg)');
 	}	
-	else if (/thunder/.test(myWeather.condition)){
+	else if (/thunder/gi.test(myWeather.condition)){
 			$(iconsPlace[0]).addClass('fa-bolt');
 			$('html').css('background-image', 'url(images/night-thunder.jpeg)');
 	     	$('.container-fluid').css('background-image', 'url(images/night-thunder.jpeg)');
