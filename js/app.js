@@ -116,5 +116,10 @@ function displaySymbols(){
 	else if(/pm/ig.test(currentTimeMinus20.toLocaleTimeString()) && currentTimeMinus20.toLocaleTimeString() <= myWeather.sunset && currentTimePlus20.toLocaleTimeString() >= myWeather.sunset){
 		$('html').css('background-image', 'url(images/sunset.jpeg)');
 	    $('.container-fluid').css('background-image', 'url(images/sunset.jpeg)');
+	}
+	else if((/am/ig.test(currentTimePlus20.toLocaleTimeString()) && currentTimePlus20.toLocaleTimeString() < myWeather.sunrise) || 
+		    (/pm/ig.test(currentTimeMinus20.toLocaleTimeString()) && currentTimeMinus20.toLocaleTimeString() > myWeather.sunset)){
+			$('html').css('background-image', 'url(images/night-clear.jpeg)');
+	        $('.container-fluid').css('background-image', 'url(images/night-clear.jpeg)');
 	}		
 }
