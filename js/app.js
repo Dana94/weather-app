@@ -99,27 +99,58 @@ function displaySymbols(){
 
 	$('#icons').show();
 
-	let currentTime = new Date();
+	let sunrisePlus5 = new Date();
+	
 
+	//console.log('+5 rise ', sunrisePlus5);
+
+	let sunsetPlus5 = new Date();
+	//sunsetPlus5.setMinutes(myWeather.sunset + 5);
+
+	//console.log('+5 set ', sunsetPlus5);
+
+	let currentTime = new Date();
+	
 	let currentTimeMinus20 = currentTime;
 	currentTimeMinus20.setMinutes(currentTime.getMinutes() - 20);
-	
+
+		
+		// console.log('-20 min ', currentTimeMinus20);
+		// console.log('-20 min ', currentTimeMinus20.toLocaleTimeString());
+
 	currentTime = new Date();
 	
 	let currentTimePlus20 = currentTime;
-	currentTimePlus20.setMinutes(currentTime.getMinutes() + 20);	
+	currentTimePlus20.setMinutes(currentTime.getMinutes() + 20);
 
-	if(/am/ig.test(currentTimeMinus20.toLocaleTimeString()) && currentTimeMinus20.toLocaleTimeString() <= myWeather.sunrise && currentTimePlus20.toLocaleTimeString() >= myWeather.sunrise){
-		$('html').css('background-image', 'url(images/sunrise.jpeg)');
-	    $('.container-fluid').css('background-image', 'url(images/sunrise.jpeg)');
-	}
-	else if(/pm/ig.test(currentTimeMinus20.toLocaleTimeString()) && currentTimeMinus20.toLocaleTimeString() <= myWeather.sunset && currentTimePlus20.toLocaleTimeString() >= myWeather.sunset){
-		$('html').css('background-image', 'url(images/sunset.jpeg)');
-	    $('.container-fluid').css('background-image', 'url(images/sunset.jpeg)');
-	}
-	else if((/am/ig.test(currentTimePlus20.toLocaleTimeString()) && currentTimePlus20.toLocaleTimeString() < myWeather.sunrise) || 
-		    (/pm/ig.test(currentTimeMinus20.toLocaleTimeString()) && currentTimeMinus20.toLocaleTimeString() > myWeather.sunset)){
-			$('html').css('background-image', 'url(images/night-clear.jpeg)');
-	        $('.container-fluid').css('background-image', 'url(images/night-clear.jpeg)');
-	}		
+		
+		// console.log('+20 min ', currentTimePlus20);
+		// console.log('+20 min ', currentTimePlus20.toLocaleTimeString());	
+		
+
+		// //true
+		// console.log('am? ', /am/ig.test(currentTimeMinus20.toLocaleTimeString()));
+		// //true
+		// console.log('>= sunrise? ', currentTimeMinus20.toLocaleTimeString() >= myWeather.sunrise);
+		// //true
+		// console.log('<= sunrise? ', currentTimePlus20.toLocaleTimeString() <= myWeather.sunrise);
+
+	//determining what time of day and if it is during a sunrise or sunset
+	//I gave the length of a typical sunrise or sunset to last about 5 minutes
+	// if(/am/ig.test(currentTimeMinus20.toLocaleTimeString()) && currentTimeMinus20.toLocaleTimeString() <= myWeather.sunrise && currentTimePlus20.toLocaleTimeString() >= myWeather.sunrise){
+	// 	console.log('here');
+	// 	$('html').css('background-image', 'url(images/sunrise.jpeg)');
+	//     $('.container-fluid').css('background-image', 'url(images/sunrise.jpeg)');
+	// }
+	// else if(/pm/ig.test(currentTimeMinus20.toLocaleTimeString()) && currentTimeMinus20.toLocaleTimeString() <= myWeather.sunset && currentTimePlus20.toLocaleTimeString() >= myWeather.sunset){
+		
+	// 	$('html').css('background-image', 'url(images/sunset.jpeg)');
+	//     $('.container-fluid').css('background-image', 'url(images/sunset.jpeg)');
+	// }
+	// else if((/am/ig.test(currentTimePlus20.toLocaleTimeString()) && currentTimePlus20.toLocaleTimeString() < myWeather.sunrise) || 
+	// 	    (/pm/ig.test(currentTimeMinus20.toLocaleTimeString()) && currentTimeMinus20.toLocaleTimeString() > myWeather.sunset)){
+	// 		console.log('only here');
+	// 		$('html').css('background-image', 'url(images/night-clear.jpeg)');
+	//         $('.container-fluid').css('background-image', 'url(images/night-clear.jpeg)');
+	// }		
 }
